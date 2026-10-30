@@ -7,28 +7,8 @@ pageEncoding="UTF-8"%>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Index JSP Page</title>
-
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f4f6f9;
-                text-align: center;
-                padding-top: 80px;
-            }
-            
-            h1 {
-                color: #007bff;
-            }
-            
-            .container {
-                background-color: white;
-                width: 60%;
-                margin: auto;
-                padding: 30px;
-                border-radius: 10px;
-                box-shadow: 0 2px 10px #ccc;
-            }
-        </style>
+                                    
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/index.css">
     </head>
 
     <body>
@@ -45,6 +25,8 @@ pageEncoding="UTF-8"%>
             <p>Course: <%= course %></p>
             <p>Current server date and time: <%= new java.util.Date() %></p>
         </div>
+        <hr size = "5px" color = "red">
+    
 
     </body>
 </html>
