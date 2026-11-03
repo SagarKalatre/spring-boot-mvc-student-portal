@@ -14,7 +14,9 @@ pageEncoding="UTF-8"%>
             <h1>Join Us!</h1>
             <p class="subtitle">Create Your Student Account</p>
 
-            <form action="/studentRegistration" method="post">
+            <!-- Student Registration Form -->
+            <form action="${pageContext.request.contextPath}/save-student" method="post">
+
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name"
                 placeholder="Enter your full name" required>
@@ -48,13 +50,45 @@ pageEncoding="UTF-8"%>
                 placeholder="Re-enter your password"
                 minlength="8" required>
 
+                <label>City:</label>
+                <input type="text" name="city" required>
+
                 <button type="submit">Register Now</button>
             </form>
 
             <p class="login-link">
                 Already registered?
-                <a href="/login">Login Here</a>
+                <a href="${pageContext.request.contextPath}/login">Login Here</a>
             </p>
+            <%-- <a href="${pageContext.request.contextPath}/forgotPassword"
+            class="forgot-password">Forgot Password?</a> --%>
+            <br>
+            <%-- <p class="Search Student">
+            Search Student By Id's
+            <a href="${pageContext.request.contextPath}/student-searchbyidpage">Search Here</a>
+            </p> --%>
+            <%-- <a href="${pageContext.request.contextPath}/student-searchbyidpage">
+            Search Student By Id
+            </a>
+            
+            <a href="${pageContext.request.contextPath}/student-search">
+            Search
+            </a> --%>
+            <div class="search-links">
+                <a href="${pageContext.request.contextPath}/student-searchbyidpage">
+                    Search Student By Id
+                </a>
+
+                <a href="${pageContext.request.contextPath}/student-search">
+                    Search Student
+                </a>
+            </div>
+
         </div>
+        <%-- <div>
+        <a href="${pageContext.request.contextPath}/studentSearchByIdPage">
+        Search Student By Id's
+        </a>
+        </div> --%>
     </body>
 </html>

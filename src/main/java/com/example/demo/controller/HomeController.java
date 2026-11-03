@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
     // @GetMapping("/homePage")
-    @RequestMapping({ "/", "/homePage" })
+    @RequestMapping("/homePage" )
     public String openHomePage() {
         return "redirect:/homePage.html";
     }
@@ -77,7 +78,8 @@ public class HomeController {
     }
 
     // student registration
-    @RequestMapping("/studentRegistration")
+    // @GetMapping("/studentRegistration")
+    // @RequestMapping ("/studentRegistration")
     public String studentRegistrationPage() {
         return "studentRegistration";
     }

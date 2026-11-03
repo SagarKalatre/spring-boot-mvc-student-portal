@@ -1,63 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %> 
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/login.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Login</title>
 
-<body>
+        <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/login.css">
+    </head>
 
-    <div class="login-box">
+    <body>
 
-        <h1>Welcome Back!</h1>
-        <p class="subtitle">Student Login Portal</p>
+        <div class="login-box">
 
-        <form action="/login" method="post">
+            <h1>Welcome Back!</h1>
+            <p class="subtitle">Student Login Portal</p>
 
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email"
-                   placeholder="Enter your email" required>
+            <form action="${pageContext.request.contextPath}/goto-dashboard" method="post">
+                <%-- <form name="" id="" method="" action="" class=""> --%>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"
-                   placeholder="Enter your password" required>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
-            <p class="forgot">
-                <a href="/forgotPassword">Forgot Password?</a>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <br><br>
+
+                <a href="${pageContext.request.contextPath}/forgotPassword"
+                class="forgot-password">Forgot Password?</a>
+                <c:if test="${not empty message}">
+                    <p style="color: red;">${message}</p>
+                </c:if>
+
+                <button type="submit">Login</button>
+
+            </form>
+
+            <p class="register-link">
+                New student?
+                <a href="${pageContext.request.contextPath}/studentRegistration">
+                    Create Account
+                </a>
             </p>
 
-            <button type="submit">Login</button>
+        </div>
 
-        </form>
-
-        <p class="register-link">
-            New student?
-            <a href="/studentRegistration">Create Account</a>
-        </p>
-
-    </div>
-
-    <div id="div_1">
+        <%-- <div id="div_1">
+        
         <p>
-            Your Name is: ${name}
-            <br>
-            Your Age is: ${age}
-        </p>
+        Your Name is: ${name}
         <br>
-        <p>
-            <%-- ${studentName} --%>
-            <c:forEach var = "student_name" items = "${studentName}">
-                Student Name -: <c:out value = "${student_name}"></c:out><br>
-            </c:forEach>
+        Your Age is: ${age}
         </p>
-    </div>
+        
+        <br>
+        
+        <p>
+        <c:forEach var="student_name" items="${studentName}">
+        Student Name: <c:out value="${student_name}"/><br>
+        </c:forEach>
+        </p>
+        
+        </div> --%>
 
-</body>
+    </body>
 </html>

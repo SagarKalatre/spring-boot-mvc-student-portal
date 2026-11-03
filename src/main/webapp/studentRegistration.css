@@ -83,3 +83,15 @@ a {
     font-weight: bold;
     text-decoration: none;
 }
+
+.search-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.search-links a {
+    text-decoration: none;
+    padding: 10px 20px;
+}
