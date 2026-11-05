@@ -16,4 +16,6 @@ public interface StudentDAO extends JpaRepository<Student, Integer> {
 
     // Search students by email
     List<Student> findByEmailIgnoreCase(String email);
+
+    // List<Student> getAllStudents();
 }

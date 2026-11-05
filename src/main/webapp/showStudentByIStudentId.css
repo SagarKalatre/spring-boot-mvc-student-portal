@@ -78,3 +78,34 @@ tr:hover {
 .back-btn:hover {
     background: #1d4ed8;
 }
+
+.edit-btn {
+    display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.edit-btn:hover {
+    background: #218838;
+}
+
+.edit-btn, .delete-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #007bff;
+}
+
+.delete-btn {
+    background: #dc3545;
+}

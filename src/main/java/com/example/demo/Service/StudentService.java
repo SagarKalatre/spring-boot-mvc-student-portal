@@ -49,4 +49,32 @@ public class StudentService {
                 return new ArrayList<>();
         }
     }
+
+    public List<Student> getAllStudents() {
+        return studentDAO.findAll();
+    }
+
+    public void updateStudentRecord(Student student) {
+        // throw new UnsupportedOperationException("Not supported yet.");
+        studentDAO.save(student);
+    }
+
+    public void deleteStudentById(int studentId) {
+        // TODO Auto-generated method stub
+        // throw new UnsupportedOperationException("Unimplemented method
+        // 'deleteStudentById'");
+
+        studentDAO.deleteById(studentId);
+    }
+
+    public List<Student> showAllStudent() {
+        // TODO Auto-generated method stub
+        // throw new UnsupportedOperationException("Unimplemented method
+        // 'showAllStudent'");
+        return studentDAO.findAll();
+    }
+
+    // public void deleteStudentById(int studentId) {
+    //     studentDAO.deleteById(studentId);
+    // }
 }

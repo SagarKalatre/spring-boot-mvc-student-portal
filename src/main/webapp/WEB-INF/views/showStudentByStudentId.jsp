@@ -1,88 +1,69 @@
-<%-- <%@ page import="java.util.List" %>
-<%@ page import="com.example.demo.model.Student" %>
-
-<%
-    List<Student> studList =
-    (List<Student>) request.getAttribute("studList");
-    
-    String message = (String) request.getAttribute("message");
-%>
-
-<% if (studList != null && !studList.isEmpty()) { %>
-
-<table border="1">
-    <tr>
-        <th>Student ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Course</th>
-    </tr>
-
-    <% for (Student s : studList) { %>
-    <tr>
-        <td><%= s.getStudentId() %></td>
-        <td><%= s.getName() %></td>
-        <td><%= s.getEmail() %></td>
-        <td><%= s.getPhone() %></td>
-        <td><%= s.getCourse() %></td>
-    </tr>
-    <% } %>
-</table>
-
-<% } else { %>
-<h3><%= message != null ? message : "No student found!" %></h3>
-<% } %> --%>
-
-
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Student Details</title>
-<%-- <link rel="stylesheet" href="showStudentByIStudentId.css"> --%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/showStudentByIStudentId.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Student Details</title>
 
-<body>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/showStudentByIStudentId.css">
 
-<div class="container">
+    </head>
 
-    <h2>Student Details</h2>
-    <p class="subtitle">Student Information Management System</p>
+    <body>
 
-    <c:choose>
+        <div class="container">
 
-        <c:when test="${not empty studList}">
+            <h2>Student Details</h2>
+            <p class="subtitle">Student Information Management System</p>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Student ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Course</th>
-                        <th>Password</th>
-                    </tr>
-                </thead>
+            <c:choose>
 
-                <tbody>
+                <c:when test="${not empty studList}">
 
-                    <c:forEach var="s" items="${studList}">
-                        <tr>
-                            <td>${s.studentId}</td>
-                            <td>${s.name}</td>
-                            <td>${s.email}</td>
-                            <td>${s.phone}</td>
-                            <td>${s.course}</td>
-                            <td>${s.password}</td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Course</th>
+                                <th>City</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <c:forEach var="s" items="${studList}">
+                                <tr>
+                                    <td>${s.studentId}</td>
+                                    <td><c:out value="${s.name}"/></td>
+                                    <td><c:out value="${s.email}"/></td>
+                                    <td><c:out value="${s.phone}"/></td>
+                                    <td><c:out value="${s.course}"/></td>
+                                    <td><c:out value="${s.city}"/></td>
+
+                                    <td>
+                                        <a href="${pageContext.request.contextPath}/show-studentRecord/${s.studentId}"
+                                        class="edit-btn">
+                                        Edit
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="${pageContext.request.contextPath}/delete-student/${s.studentId}"
+                                    method="post"
+                                    onsubmit="return confirm('Are you sure you want to delete this student?');">
+
+                                    <button type="submit">Delete</button>
+
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
 
@@ -102,9 +83,9 @@
     </c:choose>
 
     <a href="${pageContext.request.contextPath}/student-searchbyidpage"
-       class="back-btn">
-        Search Another Student
-    </a>
+    class="back-btn">
+    Search Another Student
+</a>
 
 </div>
 
