@@ -60,9 +60,9 @@ public class StudentController {
     }
 
     @PostMapping("/student-searchbyidpage")
-    public String searchStudentById(@RequestParam int studentId, Model model) {
+    public String searchStudentById1(@RequestParam int studentId, Model model) {
 
-        Student student = studentService.searchStudentById(studentId);
+        Student student = studentService.searchStudentById1(studentId);
         List<Student> studList = new ArrayList<Student>();
         studList.add(student);
         model.addAttribute("studList", studList);
@@ -108,7 +108,7 @@ public class StudentController {
 
     @GetMapping("/show-studentRecord/{studentId}")
     public String showUpdatedStudentRecord(@PathVariable int studentId, Model model) {
-        Student student = studentService.searchStudentById(studentId);
+        Student student = studentService.searchStudentById1(studentId);
         model.addAttribute("student", student);
         return "showStudentRecordPage";
     }
@@ -156,7 +156,7 @@ public class StudentController {
             Model model) {
 
         if ("id".equals(searchType)) {
-            Student student = studentService.searchStudentById(
+            Student student = studentService.searchStudentById1(
                     Integer.parseInt(searchValue));
 
             List<Student> students = new ArrayList<>();

@@ -1,18 +1,26 @@
+
 package com.example.demo.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.StudentDAO;
 import com.example.demo.model.Student;
 
 @Service
+
 public class StudentService {
     @Autowired
     private StudentDAO studentDAO;
+
+    // Logger Configuration
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentService.class);
 
     public void saveStudent(Student student) {
         studentDAO.save(student);
@@ -75,6 +83,27 @@ public class StudentService {
     }
 
     // public void deleteStudentById(int studentId) {
-    //     studentDAO.deleteById(studentId);
+    // studentDAO.deleteById(studentId);
     // }
+
+    public Student searchStudentById1(int studentId) {
+        System.out.println("Student ID: " + studentId);
+
+        LOGGER.info("Student ID: {}", studentId);
+
+        Student student = studentDAO.findStudentByStudentId(studentId);
+
+        // if (student != null && student.getStudentId() == 1) {
+        if (student != null) {
+            LOGGER.trace(">> Student found of Id: {}", student.getStudentId());
+            LOGGER.info("Student information: {}", student);
+            System.out.println(student);
+            return student;
+        }
+
+        System.out.println("Student not found for ID");
+        LOGGER.error("Student Not Found...!");
+
+        return null;
+    }
 }
